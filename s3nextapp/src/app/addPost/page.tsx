@@ -1,22 +1,31 @@
 "use client";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { addPost } from "../actions";
 
 export default function AddPost() {
   const [caption, setCaption] = useState("");
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState<File>();
 
   async function submitPost() {
-    let post = {
-      image_url: "Ejemplo1",
-      image_caption: caption,
-      image_name: "prueba",
-      created: new Date().toISOString(),
-    };
-    setCaption("");
+    //Necesary to sent data as formdata
+    if (!file) {
+      return;
+    }
+    const formData = new FormData();
+    formData.append("image", file);
+    formData.append("caption", caption);
+    formData.append("created", new Date().toISOString());
 
-    await addPost(post);
+    setCaption("");
+    addPost(formData);
   }
+
+  const fileSelected = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event && event.target && event.target.files) {
+      const file = event.target.files[0];
+      setFile(file);
+    }
+  };
 
   return (
     <div className="grid justify-items-center">
@@ -28,7 +37,7 @@ export default function AddPost() {
           name="image"
           className="cursor-pointer"
           type="file"
-          onChange={(e) => setFile(e.target.value)}
+          onChange={(e) => fileSelected(e)}
           required
         />
         <input

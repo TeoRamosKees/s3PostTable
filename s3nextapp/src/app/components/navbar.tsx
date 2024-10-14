@@ -8,7 +8,7 @@ export default function NavBar() {
       </Link>
       <Link
         href={"/addPost"}
-        className="bg-black text-white p-2 border rounded-lg hover:bg-slate-800"
+        className="bg-slate-700 text-white p-2 rounded-sm hover:bg-slate-500"
       >
         New post
       </Link>
