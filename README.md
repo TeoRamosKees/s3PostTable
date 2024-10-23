@@ -21,8 +21,8 @@ This project demonstrates how to build a web application using **Next.js**, **Ta
 - **Database Operations**: **Prisma** is used to manage posts, which include references to the images in S3.
 - **Signed URLs**: For secure file access, the application generates signed URLs for images, which are valid for a limited time.
 
-## Screenshots
-
+## Screenshots and video
+[Video example](https://youtu.be/UezW0tpU19I)!
 ![image](https://github.com/user-attachments/assets/0e7c1403-bd12-4c6a-833d-2ac635993f4a)
 ![image](https://github.com/user-attachments/assets/a72a70df-e76f-42b9-8535-954a32c895fb)
 ![image](https://github.com/user-attachments/assets/300ecf2e-de15-4bea-a78a-605237f600bf)
